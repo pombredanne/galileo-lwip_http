@@ -177,10 +177,12 @@ void setup_gmac_ethernet(void)
 
 #ifdef USE_DHCP
     /*
-     * interface must be "admin up" when DHCP is started
+     * interface must be "admin up" when DHCP is started.  set to default
+     * interface to allow ip routing.
      */
 
     netif_set_up(eth);  
+    netif_set_default(eth);
     dhcp_start(eth);
 #else
     /*
